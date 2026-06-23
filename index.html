@@ -1,326 +1,1105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deals Landing Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Old Crafts – Beautiful Jewelry for Every Occasion</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-}
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-body{
-    background:#f5f7fa;
-    color:#222;
-}
+  <style>
+    /* =========================================================
+       CSS RESET & VARIABLES
+    ========================================================= */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Header */
-header{
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
-}
+    :root {
+      --gold:        #C8972B;
+      --gold-light:  #E8B84B;
+      --brown:       #7B2D2D;
+      --brown-light: #A0522D;
+      --rose:        #E8A598;
+      --bg-light:    #FDF6F0;
+      --bg-card:     #FAF0EA;
+      --text-dark:   #1A1A1A;
+      --text-mid:    #444444;
+      --text-light:  #888888;
+      --white:       #FFFFFF;
+      --whatsapp:    #25D366;
+      --pink-accent: #D4847A;
+      --font-serif:  'Playfair Display', serif;
+      --font-sans:   'Inter', sans-serif;
+    }
 
-.top-nav{
-    max-width:1400px;
-    margin:auto;
-    padding:15px 25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+    html { scroll-behavior: smooth; }
 
-.logo{
-    font-size:26px;
-    font-weight:700;
-    color:#0076ce;
-}
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
 
-.search-box{
-    flex:1;
-    margin:0 40px;
-}
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
 
-.search-box input{
-    width:100%;
-    padding:10px 15px;
-    border:1px solid #d6d6d6;
-    border-radius:4px;
-}
+    /* =========================================================
+       TOP BAR
+    ========================================================= */
+    .top-bar {
+      background-color: var(--white);
+      border-bottom: 1px solid #F0E8E0;
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-.nav-links{
-    display:flex;
-    gap:20px;
-    font-size:14px;
-}
+    /* --- Logo --- */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 160px;
+    }
 
-.nav-links a{
-    text-decoration:none;
-    color:#555;
-}
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--white);
+      font-weight: bold;
+      font-family: var(--font-serif);
+      box-shadow: 0 2px 8px rgba(200,151,43,0.35);
+    }
 
-/* Hero */
-.hero{
-    background:#dce7f4;
-    text-align:center;
-    padding:80px 20px;
-}
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
 
-.hero small{
-    font-size:14px;
-    letter-spacing:1px;
-    font-weight:600;
-}
+    .logo-text .brand-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
 
-.hero h1{
-    margin-top:15px;
-    font-size:60px;
-    font-weight:300;
-}
+    .logo-text .brand-sub {
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
 
-.hero h1 span{
-    color:#0076ce;
-    font-weight:700;
-}
+    /* --- Search Bar --- */
+    .search-bar {
+      flex: 1;
+      max-width: 480px;
+      position: relative;
+    }
 
-.hero button{
-    margin-top:30px;
-    background:#0076ce;
-    color:#fff;
-    border:none;
-    padding:14px 28px;
-    cursor:pointer;
-    border-radius:4px;
-}
+    .search-bar input {
+      width: 100%;
+      padding: 10px 44px 10px 18px;
+      border: 1.5px solid #E5D5C5;
+      border-radius: 30px;
+      font-size: 13.5px;
+      font-family: var(--font-sans);
+      color: var(--text-mid);
+      background: var(--bg-light);
+      outline: none;
+      transition: border-color 0.2s;
+    }
 
-/* AI Search Bar */
-.ai-search{
-    max-width:900px;
-    margin:-25px auto 50px;
-    background:white;
-    border-radius:40px;
-    padding:16px 25px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
+    .search-bar input:focus { border-color: var(--gold); }
 
-.ai-search input{
-    width:100%;
-    border:none;
-    outline:none;
-    font-size:15px;
-}
+    .search-bar button {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-light);
+      font-size: 15px;
+      transition: color 0.2s;
+    }
 
-/* Content */
-.container{
-    max-width:1400px;
-    margin:auto;
-    padding:30px;
-}
+    .search-bar button:hover { color: var(--gold); }
 
-.section-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
+    /* --- Top Contact Info --- */
+    .top-contact {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      color: var(--text-mid);
+    }
 
-.section-header h2{
-    font-size:42px;
-    font-weight:300;
-}
+    .top-contact .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
 
-.section-header a{
-    text-decoration:none;
-    color:#0076ce;
-}
+    .top-contact .contact-item i {
+      color: var(--gold);
+      font-size: 14px;
+    }
 
-/* Grid */
-.grid{
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    gap:20px;
-}
+    .top-contact .contact-item.phone i { color: var(--brown); }
+    .top-contact .contact-item.location i { color: var(--gold); }
 
-.card{
-    background:#fff;
-    border-radius:10px;
-    padding:30px;
-    text-align:center;
-    transition:.3s;
-}
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+    .navbar {
+      background-color: var(--white);
+      padding: 0 40px;
+      border-bottom: 2px solid #F5EBE0;
+    }
 
-.card:hover{
-    transform:translateY(-5px);
-}
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-.card img{
-    max-width:100%;
-    height:auto;
-}
+    .nav-list li a {
+      display: block;
+      padding: 14px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dark);
+      position: relative;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
 
-.card h3{
-    margin-bottom:10px;
-    font-size:34px;
-    font-weight:300;
-}
+    .nav-list li a:hover,
+    .nav-list li a.active {
+      color: var(--gold);
+    }
 
-.offer{
-    color:#f97316;
-    font-weight:700;
-    margin-bottom:20px;
-}
+    /* Active underline */
+    .nav-list li a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px 2px 0 0;
+    }
 
-.card a{
-    display:inline-block;
-    margin-top:20px;
-    color:#0076ce;
-    text-decoration:none;
-}
+    /* Dropdown */
+    .nav-list li.dropdown { position: relative; }
 
-.large-card{
-    grid-row:span 2;
-    min-height:650px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
+    .nav-list li.dropdown > a::after {
+      content: none; /* override active underline for dropdown toggle */
+    }
 
-.small-card{
-    min-height:315px;
-}
+    .nav-list li.dropdown > a .arrow {
+      font-size: 10px;
+      margin-left: 4px;
+      transition: transform 0.2s;
+    }
 
-.small-card h4{
-    font-size:26px;
-    font-weight:400;
-    margin-bottom:10px;
-}
+    .nav-list li.dropdown:hover > a .arrow {
+      transform: rotate(180deg);
+    }
 
-.small-card img{
-    height:120px;
-    object-fit:contain;
-}
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--white);
+      min-width: 180px;
+      border: 1px solid #F0E0D0;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      z-index: 100;
+      padding: 8px 0;
+    }
 
-@media(max-width:992px){
+    .nav-list li.dropdown:hover .dropdown-menu { display: block; }
 
-.grid{
-    grid-template-columns:1fr;
-}
+    .dropdown-menu li a {
+      padding: 10px 18px;
+      font-size: 13.5px;
+      display: block;
+    }
 
-.large-card{
-    grid-row:auto;
-}
+    /* =========================================================
+       HERO / CAROUSEL
+    ========================================================= */
+    .hero {
+      position: relative;
+      margin: 16px 40px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(120deg, #F7E4D8 0%, #F0D0C0 40%, #E8C4B0 100%);
+      min-height: 320px;
+    }
 
-.hero h1{
-    font-size:42px;
-}
+    /* Slides */
+    .carousel { position: relative; width: 100%; }
 
-.section-header h2{
-    font-size:32px;
-}
-}
+    .slide {
+      display: none;
+      position: relative;
+      min-height: 320px;
+      align-items: center;
+      padding: 50px 60px;
+    }
 
-@media(max-width:768px){
+    .slide.active { display: flex; }
 
-.top-nav{
-    flex-direction:column;
-    gap:15px;
-}
+    .slide-content {
+      max-width: 420px;
+      z-index: 2;
+      position: relative;
+    }
 
-.search-box{
-    margin:0;
-    width:100%;
-}
-}
-</style>
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .slide-tag::after {
+      content: '';
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      display: inline-block;
+    }
+
+    .slide-content h1 {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      line-height: 1.15;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .slide-content h1 em {
+      font-style: italic;
+      color: var(--pink-accent);
+    }
+
+    .slide-content p {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin: 16px 0 28px;
+      max-width: 320px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brown);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-family: var(--font-sans);
+    }
+
+    .btn-primary:hover {
+      background: var(--brown-light);
+      transform: translateY(-1px);
+    }
+
+    /* Slide image area */
+    .slide-image {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Placeholder gradient jewellery image */
+    .slide-image .jewel-bg {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #F2C9B8 0%, #E8B4A0 50%, #D4907A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      opacity: 0.55;
+    }
+
+    /* Carousel dots */
+    .carousel-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .dot.active {
+      background: var(--white);
+      transform: scale(1.2);
+    }
+
+    /* Carousel nav arrows */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.75);
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+      transition: background 0.2s;
+    }
+
+    .carousel-btn:hover { background: var(--white); }
+    .carousel-btn.prev { left: 16px; }
+    .carousel-btn.next { right: 16px; }
+
+    /* =========================================================
+       AI DEAL SEARCH BAR
+    ========================================================= */
+    .ai-search-section {
+      max-width: 760px;
+      margin: 28px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .ai-search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid #E5D5C5;
+      border-radius: 40px;
+      padding: 10px 14px 10px 18px;
+      background: var(--white);
+      box-shadow: 0 2px 16px rgba(200,151,43,0.10);
+    }
+
+    .ai-icon {
+      color: var(--gold);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .ai-search-bar input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      font-family: var(--font-sans);
+      color: var(--text-mid);
+      background: transparent;
+    }
+
+    .ai-search-bar .mic-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--text-light);
+      transition: color 0.2s;
+    }
+
+    .ai-search-bar .mic-btn:hover { color: var(--gold); }
+
+    .ai-search-bar .send-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--white);
+      font-size: 16px;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .ai-search-bar .send-btn:hover { background: var(--gold-light); }
+
+    .ai-reply-hint {
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: var(--text-light);
+    }
+
+    .ai-reply-hint a {
+      color: var(--whatsapp);
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       DEALS SECTION
+    ========================================================= */
+    .deals-section {
+      padding: 20px 40px 40px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .section-label i { font-size: 14px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .view-all-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--gold);
+      transition: gap 0.2s;
+    }
+
+    .view-all-link:hover { gap: 10px; }
+
+    /* =========================================================
+       CATEGORY GRID
+    ========================================================= */
+    .category-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;   /* large left + right column */
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+
+    /* Large feature card spans 2 rows */
+    .cat-card-large {
+      grid-row: 1 / 3;
+      background: var(--bg-card);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 400px;
+      position: relative;
+      padding-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cat-card-large:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    }
+
+    .cat-card-large .jewel-placeholder {
+      width: 100%;
+      flex: 1;
+      background: linear-gradient(160deg, #F7E8E0 0%, #F0D0C0 60%, #E8C0A8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 90px;
+      min-height: 300px;
+    }
+
+    .cat-card-large .card-label {
+      text-align: center;
+      padding: 20px 20px 0;
+    }
+
+    /* Small cards in right column */
+    .right-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .cat-card-small {
+      background: var(--bg-card);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 18px 18px;
+      min-height: 185px;
+      position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cat-card-small:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    }
+
+    .cat-card-small .jewel-img {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 50px;
+      opacity: 0.80;
+    }
+
+    /* Shared card label styles */
+    .card-label h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .card-label .off-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--pink-accent);
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-mid);
+      transition: color 0.2s, gap 0.2s;
+      margin-top: 14px;
+    }
+
+    .cat-card-large .card-link { justify-content: center; }
+
+    .card-link:hover { color: var(--gold); gap: 8px; }
+
+    /* =========================================================
+       WHATSAPP FLOATING BUTTON
+    ========================================================= */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--whatsapp);
+      color: var(--white);
+      border-radius: 30px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      z-index: 999;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.55);
+    }
+
+    .whatsapp-float i { font-size: 20px; }
+
+    /* =========================================================
+       FOOTER (minimal)
+    ========================================================= */
+    footer {
+      background: var(--text-dark);
+      color: #CCC;
+      text-align: center;
+      padding: 20px 40px;
+      font-size: 12.5px;
+      margin-top: 40px;
+    }
+
+    footer a { color: var(--gold-light); }
+
+    /* =========================================================
+       RESPONSIVE – TABLET & MOBILE
+    ========================================================= */
+    @media (max-width: 900px) {
+      .top-bar { flex-wrap: wrap; padding: 12px 20px; }
+      .navbar { padding: 0 20px; }
+      .nav-list { flex-wrap: wrap; }
+      .hero { margin: 12px 16px; }
+      .slide { padding: 30px 24px; }
+      .slide-content h1 { font-size: 28px; }
+      .slide-image { display: none; }
+      .deals-section { padding: 16px 20px 32px; }
+      .category-grid { grid-template-columns: 1fr; }
+      .cat-card-large { grid-row: auto; min-height: 260px; }
+      .right-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .top-contact { display: none; }
+      .right-grid { grid-template-columns: 1fr; }
+      .section-header h2 { font-size: 22px; }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-    <div class="top-nav">
-        <div class="logo">TechStore</div>
+  <!-- ============================================================
+       TOP BAR: Logo | Search | Contact
+  ============================================================ -->
+  <header class="top-bar">
 
-        <div class="search-box">
-            <input type="text" placeholder="Search products">
-        </div>
+    <!-- Logo -->
+    <a href="#" class="logo" aria-label="Old Crafts Home">
+      <div class="logo-icon">OC</div>
+      <div class="logo-text">
+        <span class="brand-name">OLD CRAFTS</span>
+        <span class="brand-sub">Crafted</span>
+      </div>
+    </a>
 
-        <div class="nav-links">
-            <a href="#">Products</a>
-            <a href="#">Services</a>
-            <a href="#">Support</a>
-            <a href="#">Deals</a>
-        </div>
+    <!-- Search Bar -->
+    <div class="search-bar" role="search">
+      <input type="search" placeholder="Search for jewelry, collections..." aria-label="Search jewelry" />
+      <button aria-label="Submit search"><i class="fas fa-search"></i></button>
     </div>
-</header>
 
-<section class="hero">
-    <small>DAYS OF DEALS</small>
-    <h1><span>Lowest prices</span> of the Season</h1>
-    <button>Shop All Deals</button>
-</section>
+    <!-- Contact Info -->
+    <div class="top-contact">
+      <span class="contact-item phone">
+        <i class="fas fa-phone-alt"></i>
+        +91 96262 09030
+      </span>
+      <span class="contact-item instagram">
+        <i class="fab fa-instagram" style="color:#C96A8A;"></i>
+        @shopoldcrafts
+      </span>
+      <span class="contact-item location">
+        <i class="fas fa-map-marker-alt"></i>
+        Chennai, Tamil Nadu
+      </span>
+    </div>
 
-<div class="ai-search">
-    <input type="text" placeholder="Ask me about today's best deals...">
-</div>
+  </header>
 
-<div class="container">
+  <!-- ============================================================
+       NAVIGATION BAR
+  ============================================================ -->
+  <nav class="navbar" aria-label="Main navigation">
+    <ul class="nav-list">
+      <li><a href="#" class="active">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Collections <i class="fas fa-chevron-down arrow"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Premium Collection</a></li>
+          <li><a href="#">Xuping Collection</a></li>
+          <li><a href="#">Bridal Sets</a></li>
+          <li><a href="#">Festive Picks</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Necklaces</a></li>
+      <li><a href="#">Earrings</a></li>
+      <li><a href="#">Bangles</a></li>
+      <li><a href="#">Rings</a></li>
+      <li><a href="#">Sets</a></li>
+      <li><a href="#">New Arrivals</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
 
+  <!-- ============================================================
+       HERO CAROUSEL
+  ============================================================ -->
+  <section class="hero" aria-label="Featured promotions">
+    <div class="carousel" id="heroCarousel">
+
+      <!-- Slide 1 -->
+      <div class="slide active" aria-hidden="false">
+        <div class="slide-content">
+          <span class="slide-tag">Elegance Redefined</span>
+          <h1>Beautiful Jewelry<br/><em>for Every Occasion</em></h1>
+          <p>Premium Xuping Collection crafted with perfection to make you shine.</p>
+          <a href="#" class="btn-primary">Shop All Collection <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="slide-image" aria-hidden="true">
+          <div class="jewel-bg">💍</div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide" aria-hidden="true">
+        <div class="slide-content">
+          <span class="slide-tag">New Arrivals</span>
+          <h1>Bridal Sets<br/><em>Crafted with Love</em></h1>
+          <p>Discover our exclusive bridal collections, designed to dazzle on your special day.</p>
+          <a href="#" class="btn-primary">Explore Bridal Sets <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="slide-image" aria-hidden="true">
+          <div class="jewel-bg">💎</div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide" aria-hidden="true">
+        <div class="slide-content">
+          <span class="slide-tag">Days of Deals</span>
+          <h1>Up to 30% Off<br/><em>on Top Picks</em></h1>
+          <p>Shop limited-time offers across necklaces, earrings, bangles, and more.</p>
+          <a href="#" class="btn-primary">View Offers <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="slide-image" aria-hidden="true">
+          <div class="jewel-bg">📿</div>
+        </div>
+      </div>
+
+    </div><!-- /carousel -->
+
+    <!-- Prev / Next buttons -->
+    <button class="carousel-btn prev" id="prevBtn" aria-label="Previous slide">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="carousel-btn next" id="nextBtn" aria-label="Next slide">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Dot indicators -->
+    <div class="carousel-dots" role="tablist" aria-label="Carousel indicators">
+      <button class="dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+      <button class="dot"        data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+      <button class="dot"        data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       AI DEAL SEARCH BAR
+  ============================================================ -->
+  <section class="ai-search-section" aria-label="AI deal search">
+    <div class="ai-search-bar">
+      <!-- Sparkle / AI icon -->
+      <i class="fas fa-sparkles ai-icon" aria-hidden="true"></i>
+
+      <input
+        type="text"
+        id="aiSearchInput"
+        placeholder="Ask me about today's best deals."
+        aria-label="Ask about deals"
+      />
+
+      <!-- Mic button -->
+      <button class="mic-btn" aria-label="Voice input">
+        <i class="fas fa-microphone"></i>
+      </button>
+
+      <!-- Send button -->
+      <button class="send-btn" id="aiSendBtn" aria-label="Send query">
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <p class="ai-reply-hint">
+      We reply on <a href="https://wa.me/919626209030" target="_blank" rel="noopener">WhatsApp</a>
+      &bull; Fast &amp; Easy
+    </p>
+  </section>
+
+  <!-- ============================================================
+       DEALS SECTION – Savings in Every Category
+  ============================================================ -->
+  <section class="deals-section" aria-labelledby="dealsHeading">
+
+    <!-- Label -->
+    <div class="section-label">
+      <i class="fas fa-tag" aria-hidden="true"></i>
+      Days of Deals
+    </div>
+
+    <!-- Header row -->
     <div class="section-header">
-        <h2>Savings in Every Category</h2>
-        <a href="#">Shop All Deals →</a>
+      <h2 id="dealsHeading">Savings in Every Category</h2>
+      <a href="#" class="view-all-link">
+        Shop All Collection <i class="fas fa-arrow-right"></i>
+      </a>
     </div>
 
-    <div class="grid">
+    <!-- Category Grid -->
+    <div class="category-grid">
 
-        <div class="card large-card">
-            <h3>Laptops</h3>
-            <div class="offer">UP TO $850 OFF</div>
-
-            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800"
-                 alt="Laptop">
-
-            <a href="#">View Laptop Deals →</a>
+      <!-- ── Large Card: Necklaces ── -->
+      <article class="cat-card-large" aria-label="Necklaces up to 30% off">
+        <div class="jewel-placeholder" aria-hidden="true">📿</div>
+        <div class="card-label">
+          <h3>Necklaces</h3>
+          <p class="off-tag">UP TO 30% OFF</p>
+          <a href="#" class="card-link">View Necklace Collection <i class="fas fa-arrow-right"></i></a>
         </div>
+      </article>
 
-        <div class="card small-card">
-            <h4>Desktops</h4>
-            <div class="offer">UP TO $600 OFF</div>
+      <!-- ── Right 2×2 Grid ── -->
+      <div class="right-grid">
 
-            <img src="https://cdn-icons-png.flaticon.com/512/179/179457.png">
-            <a href="#">View Deals →</a>
-        </div>
+        <!-- Earrings -->
+        <article class="cat-card-small" aria-label="Earrings up to 25% off">
+          <div class="card-label">
+            <h3>Earrings</h3>
+            <p class="off-tag">UP TO 25% OFF</p>
+          </div>
+          <span class="jewel-img" aria-hidden="true">🪝</span>
+          <a href="#" class="card-link">View Earring Collection <i class="fas fa-arrow-right"></i></a>
+        </article>
 
-        <div class="card small-card">
-            <h4>PC Accessories</h4>
-            <div class="offer">UP TO $100 OFF</div>
+        <!-- Bangles -->
+        <article class="cat-card-small" aria-label="Bangles up to 20% off">
+          <div class="card-label">
+            <h3>Bangles</h3>
+            <p class="off-tag">UP TO 20% OFF</p>
+          </div>
+          <span class="jewel-img" aria-hidden="true">⭕</span>
+          <a href="#" class="card-link">View Bangles Collection <i class="fas fa-arrow-right"></i></a>
+        </article>
 
-            <img src="https://cdn-icons-png.flaticon.com/512/3474/3474360.png">
-            <a href="#">View Deals →</a>
-        </div>
+        <!-- Rings -->
+        <article class="cat-card-small" aria-label="Rings up to 25% off">
+          <div class="card-label">
+            <h3>Rings</h3>
+            <p class="off-tag">UP TO 25% OFF</p>
+          </div>
+          <span class="jewel-img" aria-hidden="true">💍</span>
+          <a href="#" class="card-link">View Ring Collection <i class="fas fa-arrow-right"></i></a>
+        </article>
 
-        <div class="card small-card">
-            <h4>Monitors</h4>
-            <div class="offer">UP TO $200 OFF</div>
+        <!-- Jewelry Sets -->
+        <article class="cat-card-small" aria-label="Jewelry Sets up to 30% off">
+          <div class="card-label">
+            <h3>Jewelry Sets</h3>
+            <p class="off-tag">UP TO 30% OFF</p>
+          </div>
+          <span class="jewel-img" aria-hidden="true">✨</span>
+          <a href="#" class="card-link">View Sets Collection <i class="fas fa-arrow-right"></i></a>
+        </article>
 
-            <img src="https://cdn-icons-png.flaticon.com/512/3474/3474361.png">
-            <a href="#">View Deals →</a>
-        </div>
+      </div><!-- /right-grid -->
+    </div><!-- /category-grid -->
 
-        <div class="card small-card">
-            <h4>Business PCs</h4>
-            <div class="offer">UP TO $500 OFF</div>
+  </section>
 
-            <img src="https://cdn-icons-png.flaticon.com/512/3474/3474361.png">
-            <a href="#">View Deals →</a>
-        </div>
+  <!-- ============================================================
+       WHATSAPP FLOATING BUTTON
+  ============================================================ -->
+  <a
+    href="https://wa.me/919626209030"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+  >
+    <i class="fab fa-whatsapp"></i>
+    Chat on WhatsApp
+  </a>
 
-    </div>
+  <!-- ============================================================
+       FOOTER (minimal)
+  ============================================================ -->
+  <footer>
+    <p>&copy; 2025 <a href="#">Old Crafts</a> — Chennai, Tamil Nadu. All rights reserved.</p>
+  </footer>
 
-</div>
+  <!-- ============================================================
+       JAVASCRIPT: Carousel Logic + AI Search
+  ============================================================ -->
+  <script>
+    /* ─────────────────────────────────────────────
+       HERO CAROUSEL
+    ───────────────────────────────────────────── */
+    const slides      = document.querySelectorAll('.slide');
+    const dots        = document.querySelectorAll('.dot');
+    const prevBtn     = document.getElementById('prevBtn');
+    const nextBtn     = document.getElementById('nextBtn');
+    let   currentSlide = 0;
+    let   autoTimer;
+
+    /**
+     * Show the slide at the given index.
+     * @param {number} index - Target slide index
+     */
+    function goToSlide(index) {
+      // Bounds check with wrap-around
+      if (index < 0)             index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+
+      // Hide current slide
+      slides[currentSlide].classList.remove('active');
+      slides[currentSlide].setAttribute('aria-hidden', 'true');
+      dots[currentSlide].classList.remove('active');
+      dots[currentSlide].setAttribute('aria-selected', 'false');
+
+      // Show new slide
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+      slides[currentSlide].setAttribute('aria-hidden', 'false');
+      dots[currentSlide].classList.add('active');
+      dots[currentSlide].setAttribute('aria-selected', 'true');
+    }
+
+    /** Advance to the next slide automatically */
+    function startAutoPlay() {
+      autoTimer = setInterval(() => goToSlide(currentSlide + 1), 4500);
+    }
+
+    /** Restart autoplay timer (called on manual navigation) */
+    function resetAutoPlay() {
+      clearInterval(autoTimer);
+      startAutoPlay();
+    }
+
+    // Button listeners
+    prevBtn.addEventListener('click', () => { goToSlide(currentSlide - 1); resetAutoPlay(); });
+    nextBtn.addEventListener('click', () => { goToSlide(currentSlide + 1); resetAutoPlay(); });
+
+    // Dot listeners
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goToSlide(Number(dot.dataset.slide));
+        resetAutoPlay();
+      });
+    });
+
+    // Keyboard arrow support
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { goToSlide(currentSlide - 1); resetAutoPlay(); }
+      if (e.key === 'ArrowRight') { goToSlide(currentSlide + 1); resetAutoPlay(); }
+    });
+
+    // Start autoplay on page load
+    startAutoPlay();
+
+    /* ─────────────────────────────────────────────
+       AI DEAL SEARCH BAR
+    ───────────────────────────────────────────── */
+    const aiInput   = document.getElementById('aiSearchInput');
+    const aiSendBtn = document.getElementById('aiSendBtn');
+
+    /**
+     * Handle AI search submission.
+     * In production, replace this with a real API call.
+     */
+    function handleAiSearch() {
+      const query = aiInput.value.trim();
+      if (!query) return;
+
+      // Placeholder: redirect to WhatsApp with the query pre-filled
+      const waMsg  = encodeURIComponent(`Hi! I want to know about: ${query}`);
+      const waURL  = `https://wa.me/919626209030?text=${waMsg}`;
+      window.open(waURL, '_blank', 'noopener,noreferrer');
+
+      aiInput.value = '';
+    }
+
+    // Click
+    aiSendBtn.addEventListener('click', handleAiSearch);
+
+    // Enter key
+    aiInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleAiSearch();
+    });
+
+    /* ─────────────────────────────────────────────
+       ACTIVE NAV LINK – highlight on click
+    ───────────────────────────────────────────── */
+    document.querySelectorAll('.nav-list > li > a').forEach(link => {
+      link.addEventListener('click', function () {
+        document.querySelectorAll('.nav-list > li > a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
